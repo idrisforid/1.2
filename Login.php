@@ -1,3 +1,34 @@
+<?php require_once("Includes/DB.php");?>
+
+<?php require_once("Includes/Functions.php");?>
+
+<?php require_once("Includes/Sessions.php");?>
+
+<?php 
+
+if (isset($_POST["submit"])) {
+  $Username = $_POST["Username"];
+  $Password = $_POST["Password"];
+  if (empty($Username)||empty($Password)) {
+    $_SESSION["ErrorMessage"]="All Fields must be filled out!";
+    Redirect_to("Login.php");
+  }else{
+    //code for checking username and password from database
+    $Found_Account=Login_attempt($Username,$Password);
+    if ($Found_Account) {
+      $_SESSION["UserId"] =$Found_Account["id"];
+      $_SESSION["UserName"]=$Found_Account["username"];
+      $_SESSION["AdminName"]=$Found_Account["aname"];
+      $_SESSION["SuccessMessage"]="Welcome ".$_SESSION["AdminName"];
+    }else{
+      $_SESSION["ErrorMessage"]="Incorrect Username/password";
+      Redirect_to("Login.php");
+    }
+  }
+}
+
+ ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,6 +84,10 @@
    <div class="row">
      <div class="offset-sm-3 col-sm-6" style="min-height: 400px;">
       <br>
+      <?php 
+           echo ErrorMessage();
+           echo SuccessMessage();
+         ?>
        <div class="card bg-secondary text-light">
          <div class="card-header">
            <h4>Wellcome Back</h4>
@@ -78,8 +113,9 @@
                  </div>
                  <input type="password" class="form-control" name="Password" id="password">
                </div>
-               <input type="submit" name="submit" class="btn btn-info btn-block mt-3" value="Login">
+               
              </div>
+             <input type="submit" name="submit" class="btn btn-info btn-block " value="Login">
            </form>
          </div>
        </div>
