@@ -6,7 +6,7 @@
 <?php
 
 if (isset($_POST["submit"])) {
-  $Username        = $_POST['Username'];
+  $UserName        = $_POST['Username'];
   $Name            = $_POST['Name'];
   $Password        = $_POST['Password'];
   $ConfirmPassword = $_POST['ConfirmPassword'];
@@ -17,7 +17,7 @@ if (isset($_POST["submit"])) {
   $DateTime=strftime("%B-%d-%Y %H:%M:%S",$CurrentTime);
   
 
-  if (empty($Username)||empty($Password)||empty($ConfirmPassword)) {
+  if (empty($UserName)||empty($Password)||empty($ConfirmPassword)) {
     $_SESSION["ErrorMessage"]= "All field must be filled out!";
      Redirect_to("Admins.php");
   }
@@ -29,6 +29,10 @@ if (isset($_POST["submit"])) {
     $_SESSION["ErrorMessage"]= "Password and Confirm Password should be matched";
      Redirect_to("Admins.php");
   }
+  elseif (CheckUserNameExistsOrNot($UserName)) {
+    $_SESSION["ErrorMessage"] = "Username Exists. Try another one!";
+      Redirect_to("Admins.php");
+   }
   else{
     //Query to insert category to DB when everything fine
 
@@ -38,7 +42,7 @@ if (isset($_POST["submit"])) {
     $sql.= "VALUES(:dateTime,:username,:password,:aname,:addedby)";
     $stmt= $ConnectingDB->prepare($sql);
     $stmt->bindValue(':dateTime',$DateTime); 
-    $stmt->bindValue(':username',$Username);
+    $stmt->bindValue(':username',$UserName);
     $stmt->bindValue(':password',$Password);
     $stmt->bindValue(':aname',$Name);
     $stmt->bindValue(':addedby',$Admin);
@@ -63,10 +67,10 @@ if (isset($_POST["submit"])) {
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-	<title>
-		Add New Admin
-	</title>
-	<link rel="stylesheet" type="text/css" href="Css/Styles.css">
+  <title>
+    Add New Admin
+  </title>
+  <link rel="stylesheet" type="text/css" href="Css/Styles.css">
 </head>
 <body>
 
@@ -74,8 +78,8 @@ if (isset($_POST["submit"])) {
 
   <div style="height: 10px; background: #27aae1"></div>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	<div class="container">
-	<a href="#" class="navbar-brand">Forid.com</a>
+  <div class="container">
+  <a href="#" class="navbar-brand">Forid.com</a>
 
     <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarcollapseCMS">
       <span class="navbar-toggler-icon"></span>
@@ -85,25 +89,25 @@ if (isset($_POST["submit"])) {
 
     <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-          	<a href="MyProfile.php" class="nav-link"> <i class="fas fa-user text-success"></i> My Profile</a>
+            <a href="MyProfile.php" class="nav-link"> <i class="fas fa-user text-success"></i> My Profile</a>
           </li> 
           <li class="nav-item">
-          	<a href="Dashboard.php" class="nav-link">Dashboard</a>
+            <a href="Dashboard.php" class="nav-link">Dashboard</a>
           </li>
           <li class="nav-item">
-          	<a href="post.php" class="nav-link">post</a>
+            <a href="post.php" class="nav-link">post</a>
           </li>
           <li class="nav-item">
-          	<a href="categories.php" class="nav-link">categories</a>
+            <a href="categories.php" class="nav-link">categories</a>
           </li>
           <li class="nav-item">
-          	<a href="Admins.php" class="nav-link">Manage Admins</a>
+            <a href="Admins.php" class="nav-link">Manage Admins</a>
           </li>
           <li class="nav-item">
-          	<a href="Comments.php" class="nav-link">Comments</a>
+            <a href="Comments.php" class="nav-link">Comments</a>
           </li>
           <li class="nav-item">
-          	<a href="Blog.php" class="nav-link">Live Blog</a>
+            <a href="Blog.php" class="nav-link">Live Blog</a>
           </li>   
     </ul>
     <ul class="navbar-nav ml-auto">
