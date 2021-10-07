@@ -4,6 +4,7 @@
 
  <?php require_once("Includes/Sessions.php");?>
 
+<?php Confirm_Login(); ?>
 
 
 <!DOCTYPE html>
