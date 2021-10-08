@@ -87,8 +87,14 @@
 <section class="container py-2 mb-4">
   <div class="row" style="min-height: 30px;">
     <div class="col-lg-12" style="min-height: 400px;">
+
+       <?php 
+           echo ErrorMessage();
+           echo SuccessMessage();
+         ?>
+         <h2>Un-Approved Comments</h2>
       <table class="table table-stripped table-hover">
-        <h2>Un-Approved Comments</h2>
+        
         <thead class="thead-dark">
           <tr>
             <th>No.</th>
@@ -127,8 +133,8 @@
            <td><?php echo $CommenterName; ?></td>
            
            <td><?php echo $CommentContent; ?></td>
-           <td><a class="btn btn-success" href="FullPost.php?id=<?php echo $CommentPostId;?>">Approve</a></td>
-           <td><a class="btn btn-danger" href="FullPost.php?id=<?php echo $CommentPostId;?>">Delete</a></td>
+           <td><a class="btn btn-success" href="ApproveComments.php?id=<?php echo $CommentId;?>">Approve</a></td>
+           <td><a class="btn btn-danger" href="DeleteComments.php?id=<?php echo $CommentPostId;?>">Delete</a></td>
            <td><a class="btn btn-primary" href="FullPost.php?id=<?php echo $CommentPostId;?>">Live preview</a></td>
          </tr>
        </tbody>
