@@ -4,7 +4,10 @@
 
  <?php require_once("Includes/Sessions.php");?>
 
-<?php Confirm_Login(); ?>
+<?php 
+$_SESSION["TrackingURL"]=$_SERVER["PHP_SELF"];
+
+Confirm_Login(); ?>
 
 
 <!DOCTYPE html>
