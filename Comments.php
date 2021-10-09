@@ -135,7 +135,7 @@
            <td><?php echo $CommentContent; ?></td>
            <td><a class="btn btn-success" href="ApproveComments.php?id=<?php echo $CommentId;?>">Approve</a></td>
            <td><a class="btn btn-danger" href="DeleteComments.php?id=<?php echo $CommentId;?>">Delete</a></td>
-           <td><a class="btn btn-primary" href="FullPost.php?id=<?php echo $CommentPostId;?>">Live preview</a></td>
+           <td style="min-width: 140px;"><a class="btn btn-primary" href="FullPost.php?id=<?php echo $CommentPostId;?>">Live preview</a></td>
          </tr>
        </tbody>
        <?php } ?>
@@ -178,7 +178,7 @@
                       <td><?php echo $CommentContent; ?></td>
                       <td><a href="DisapproveComments.php?id=<?php echo $CommentId; ?>" class="btn btn-warning">DisApprove</a></td>
                       <td><a href="DeleteComments.php?id=<?php echo $CommentId; ?>" class="btn btn-danger">Delete</a></td>
-                      <td><a href="FullPost.php?id=<?php echo $CommentPostId; ?>" class="btn btn-primary">Live Preview</a></td>
+                      <td style="min-width: 140px;"><a href="FullPost.php?id=<?php echo $CommentPostId; ?>" class="btn btn-primary">Live Preview</a></td>
 
                     </tr>
                   </tbody>  
