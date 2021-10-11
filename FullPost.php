@@ -190,8 +190,8 @@ if (isset($_POST["submit"])) {
             <?php echo htmlentities($PostTitle)  ; ?>
               
             </h4>
-           <small class="text-muted">Written by <?php echo htmlentities($Admin); ?> on <?php echo htmlentities($DateTime) ; ?></small>
-           <span style="float: right;" class="badge badge-dark text-white">Comments 20</span>
+           <small class="text-muted">Category: <span class="text-dark"> <?php echo $Category ; ?> </span> & Written by <span class="text-dark"> <?php echo htmlentities($Admin); ?> </span> on <span class="text-dark"><?php echo htmlentities($DateTime) ; ?></span></small>
+           
            <hr>
            <p class="card-text">
             
