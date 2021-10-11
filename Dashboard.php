@@ -207,10 +207,31 @@ Confirm_Login(); ?>
              <td><?php echo $DateTime; ?></td>
              <td><?php echo $Author; ?></td>
              <td>
-              <span class="badge badge-success">00</span>
-              <span class="badge badge-danger">00</span>
+              
+                <?php 
+                  $Total=ApproveCommentsAccordingToPost($PostId);
+                  if ($Total>0) {
+                    ?>
+                    <span class="badge badge-success">
+                      <?php
+                    echo $Total;
+                  }
+                  
+                 ?>
+                   </span>
+              <?php 
+                  $Total=DisApproveCommentsAccordingToPost($PostId);
+                  if ($Total>0) {
+                    ?>
+                    <span class="badge badge-danger">
+                      <?php
+                    echo $Total;
+                  }
+                  
+                 ?>
+                   </span>
              </td>
-             <td><span class="btn btn-info">Preview</span></td>
+             <td><a target="_blank" href="FullPost.php?id=<?php echo $PostId; ?>" > <span class="btn btn-info">Preview</span></a></td>
            </tr>
          </tbody>
         <?php } ?>
