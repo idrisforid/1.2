@@ -93,6 +93,19 @@
              $stmt = $ConnectingDB->prepare($sql);
              $stmt->bindvalue(':search','%'.$Search.'%');
              $stmt->execute();
+           }
+           //Query when Pagination is Active 
+           elseif(isset($_GET["page"])){
+             $Page = $_GET["page"];
+             if ($Page==0||$Page<0) {
+               $ShowPostFrom=0;
+             }else{
+               $ShowPostFrom = ($Page*4)-4;
+             }
+             
+             $sql  = "SELECT * FROM posts ORDER BY id desc LIMIT $ShowPostFrom,4";
+             $stmt = $ConnectingDB->query($sql);
+
            } 
             
          //default sql query
@@ -123,7 +136,7 @@
               
             </h4>
            <small class="text-muted">Category: <span class="text-dark"> <?php echo $Category ; ?> </span> & Written by <span class="text-dark"> <?php echo htmlentities($Admin); ?> </span> on <span class="text-dark"><?php echo htmlentities($DateTime) ; ?></span></small>
-           
+
            <span style="float: right;" class="badge badge-dark text-white">Comments 
             <?php echo ApproveCommentsAccordingToPost($PostId); ?>
               
