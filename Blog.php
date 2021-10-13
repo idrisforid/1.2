@@ -110,7 +110,7 @@
             
          //default sql query
          else{
-         $sql  = "SELECT * FROM posts ORDER BY id desc";
+         $sql  = "SELECT * FROM posts ORDER BY id desc LIMIT 0,3";
          $stmt = $ConnectingDB->query($sql);
              }
          
@@ -176,11 +176,26 @@
        // echo $PostPagination;
 
         for($i=1;$i<=$PostPagination;$i++){
+          if (isset($Page)) {
+            if ($i==$Page) {
          ?>
+
+         <li class="page-item active">
+           <a href="Blog.php?page=<?php echo $i; ?>" class="page-link"><?php echo $i; ?></a>
+         </li>
+
+       <?php   
+       } else{ 
+        ?>
          <li class="page-item">
            <a href="Blog.php?page=<?php echo $i; ?>" class="page-link"><?php echo $i; ?></a>
          </li>
-         <?php } ?>
+
+         <?php 
+         }
+         }
+         } 
+         ?>
        </ul>
      </nav>
 
