@@ -162,6 +162,20 @@
 
      <nav>
        <ul class="pagination pagination-md">
+        
+         <!-- Creating backward Button -->
+       <?php 
+
+        if (isset($Page)) {
+          if ($Page>1) {     
+          
+        ?>
+
+        <li class="page-item">
+           <a href="Blog.php?page=<?php echo $Page-1; ?>" class="page-link">&laquo;</a>
+         </li>
+
+         <?php } } ?>
 
         <?php  
 
@@ -196,6 +210,21 @@
          }
          } 
          ?>
+
+      <!-- Creating Forward Button -->
+       <?php 
+
+        if (isset($Page)) {
+          if ($Page+1<=$PostPagination) {     
+          
+        ?>
+
+        <li class="page-item">
+           <a href="Blog.php?page=<?php echo $Page+1; ?>" class="page-link">&raquo;</a>
+         </li>
+
+         <?php } } ?>
+
        </ul>
      </nav>
 
