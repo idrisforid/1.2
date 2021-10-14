@@ -159,7 +159,7 @@
      <?php } ?>
 
      <!--Pagination-->
-
+     <br>
      <nav>
        <ul class="pagination pagination-md">
         
@@ -214,7 +214,7 @@
       <!-- Creating Forward Button -->
        <?php 
 
-        if (isset($Page)) {
+        if (isset($Page)&&!empty($Page)) {
           if ($Page+1<=$PostPagination) {     
           
         ?>
