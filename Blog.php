@@ -8,6 +8,18 @@
 
 <!DOCTYPE html>
 <html>
+
+<style media="screen">
+  .heading{
+  font-family: Bitter,Georgia,"Times New Roman", Times,serif;
+  font-weight: bold;
+  color: #005E90;
+}
+
+.heading:hover{
+   color: #0090DB;
+}
+</style>
 <head>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -233,8 +245,58 @@
     <!--Main area end-->
 
     <!--Side area start-->
-    <div class="col-sm-4" style="min-height: 40px; background: green;">
-      
+    <div class="col-sm-4" >
+      <div class="card mt-4">
+        <div class="card-body">
+          <img src="images/startblog.png" class="d-block img-fluid mb-3">
+          <div class="text-center">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sollicitudin ipsum purus, non sodales ex posuere tempus. In hac habitasse platea dictumst. Etiam rutrum arcu pulvinar, ultricies nisi sed, gravida dolor. Pellentesque at ultrices nunc. Nunc et quam vitae augue condimentum commodo eu ac sapien.
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="card">
+        <div class="card-header bg-dark text-light">
+          <h2 class="lead">Sign Up !</h2>
+        </div>
+        <div class="card-body">
+          <button type="button" class="btn btn-success btn-block text-center text-white mb-3" name="button">Join The Forum</button>
+          <button type="button" class="btn btn-danger btn-block text-center text-white mb-3" name="button">Login</button>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Enter Your Email" name="">
+            <div class="input-group-append">
+              <button type="button" class="btn btn-primary btn-sm text-center text-white" name="button">Subscribe Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="card">
+        <div class="card-header bg-primary text-light">
+          <h2 class="lead">Categories</h2>
+          </div>
+          <div class="card-body">
+            <?php 
+
+             global $ConnectingDB;
+             $sql = "SELECT * FROM category ORDER BY id desc";
+             $stmt= $ConnectingDB->query($sql);
+             while($DataRows    = $stmt->fetch()){
+                  $CategoryID   = $DataRows["id"];
+                  $CategoryName = $DataRows["title"];             
+             ?>
+       
+           <a href="Blog.php?category=<?php echo $CategoryName; ?>"><span class="heading"><?php echo $CategoryName; ?></span></a><br>
+
+             <?php } ?>
+          </div>
+        
+      </div>
+
     </div>
     <!--Side area end-->
   </div>
