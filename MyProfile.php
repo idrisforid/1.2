@@ -158,7 +158,7 @@ if (isset($_POST["submit"])) {
          <h3><?php echo $ExistingName; ?></h3>
        </div>
        <div class="card-body">
-         <img src="Images/download.png" class="block img-fluid mb-3">
+         <img src="Images/avatar-bg.png" class="block img-fluid mb-3">
          <div class="">
            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at tellus finibus, pretium ante sed, suscipit nisl. Suspendisse ornare placerat lorem eu blandit. Praesent at volutpat ante. Sed vehicula turpis et hendrerit varius. 
          </div>
@@ -175,43 +175,33 @@ if (isset($_POST["submit"])) {
            echo SuccessMessage();
          ?>
 
-        <form class="" action="AddNewPost.php" method="post" enctype="multipart/form-data">
-           <div class="card bg-secondary text-light mb-3">
-             
+        <form class="" action="MyProfile.php" method="post" enctype="multipart/form-data">
+           <div class="card bg-dark text-light mb-3">
+             <div class="card-header bg-secondary text-light">
+               <h4>Edit Profile</h4>
+             </div>
              <div class="card-body bg-dark">
                <div class="form-group">
-                 <label for="title"> <span class="FieldInfo"> Post Title </span> </label>
-                 <input class="form-control" type="text" name="PostTitle" id="title" placeholder="Type title here" >
+                 <input class="form-control" type="text" name="Name" id="title" placeholder="Your name here" >
+                 
                </div>
                <div class="form-group">
-                 <label for="CategoryTitle"> <span class="FieldInfo"> Choose Category </span> </label>
-                 <select class="form-control" id="CategoryTitle" name="Category">
-                  <?php 
-                    
-                    //fetching all the categories from category table
-                    global $ConnectingDB;
-                    $sql = "SELECT id,title FROM category";
-                    $stmt = $ConnectingDB->query($sql);
-                    while ($DataRows = $stmt->fetch()) {
-                      $Id = $DataRows["id"];
-                      $CategoryName=$DataRows["title"];
-
-                    
-                   ?>
-                   <option><?php echo $CategoryName; ?></option>
-                 <?php } ?>
-                </select>
+                <input class="form-control" type="text" id="title" placeholder="headline" name="headline" >
+                 <small class="text-muted">Add a professional headline like, 'Engineer' at XYZ or 'Architect'</small>
+                 <span class="text-danger">Not more than 12 characters</span>
                </div>
+
+               <div class="mb-3">
+                 <textarea class="form-control" placeholder="Bio" id="Post" name="PostDescription" rows="8" cols="80"></textarea>
+               </div>
+               
                <div class="form-group">
                  <div class="custom-file">
                  <input class="custom-file-input" type="File" name="Image" id="imageSelect" value="">
                  <label for="imageSelect" class="custom-file-label">Select Image</label>
                  </div>
                </div>
-               <div class="mb-3">
-                 <label for="Post"> <span class="FieldInfo"> Post </span> </label>
-                 <textarea class="form-control" id="Post" name="PostDescription" rows="8" cols="80"></textarea>
-               </div>
+               
 
                <div class="row">
                  <div class="col-lg-6 mb-2">
