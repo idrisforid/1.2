@@ -110,11 +110,12 @@ Confirm_Login(); ?>
 
 
 <section class="container py-2 mb-4">
-  <div class="row">
-     <?php 
+  <?php 
            echo ErrorMessage();
            echo SuccessMessage();
          ?>
+  <div class="row">
+     
 <!--Left Side Area Start-->
    
     <div class="col-lg-2 d-none d-md-block">

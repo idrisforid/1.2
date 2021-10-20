@@ -23,7 +23,7 @@ if (isset($_POST["submit"])) {
       if (isset($_SESSION["TrackingURL"])) {
         Redirect_to($_SESSION["TrackingURL"]);
       }else{
-         Redirect_to("Dasboard.php");
+         Redirect_to("Dashboard.php");
       }
 
     }else{
