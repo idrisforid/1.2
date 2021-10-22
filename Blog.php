@@ -84,14 +84,18 @@
 
 <!--Header-->
 <div class="container">
-  <div class="row mt-4" >
 
+  <div class="row mt-4" >
+  
     <!--Main area start-->
 
     <div class="col-sm-8" >
       <h1>the complete responsive cms blog</h1>
       <h1 class="lead">the complete blog using php by mohammad forid</h1>
-
+    <?php 
+           echo ErrorMessage();
+           echo SuccessMessage();
+         ?>
       <?php
          global $ConnectingDB;
          //SQL query when search button is active

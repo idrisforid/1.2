@@ -1,3 +1,37 @@
+<?php require_once("Includes/DB.php");?>
+
+ <?php require_once("Includes/Functions.php");?>
+
+ <?php require_once("Includes/Sessions.php");?>
+
+
+<!--Fetching Existing Data-->
+
+<?php 
+
+$SearchQueryParameter = $_GET["username"];
+global $ConnectingDB;
+$sql = "SELECT aname, aheadline,abio,aimage FROM admins WHERE username=:userName";
+$stmt= $ConnectingDB->prepare($sql);
+$stmt->bindvalue(':userName', $SearchQueryParameter);
+$stmt->execute();
+$Result = $stmt->rowcount();
+if ($Result==1) {
+  while ($DataRows    =$stmt->fetch()) {
+    $ExistingName     = $DataRows["aname"];
+    $ExistingBio      = $DataRows["abio"];
+    $ExistingImage    = $DataRows["aimage"];
+    $ExistingHeadline = $DataRows["aheadline"];
+
+  }
+}
+else{
+  $_SESSION["ErrorMessage"]= "Bad request";
+     Redirect_to("Blog.php?page=1");
+}
+
+ ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,8 +101,8 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-      <h1> <i class="fas fa-user text-success mr-2" style="color: green;"></i>Name</h1>
-      <h3>Headline</h3>
+      <h1> <i class="fas fa-user text-success mr-2" style="color: green;"></i><?php echo $ExistingName; ?></h1>
+      <h3><?php echo $ExistingHeadline; ?></h3>
       </div>
     </div>
   </div>
@@ -79,12 +113,12 @@
 <section class="container py-2 mb-4">
   <div class="row">
     <div class="col-md-3">
-      <img src="Images/avatar-bg.png" class="d-block img-fluid mb-3 rounded-circle" >
+      <img src="Images/<?php echo $ExistingImage; ?>" class="d-block img-fluid mb-3 rounded-circle" >
     </div>
     <div class="col-md-9" style="min-height: 320px;">
       <div class="card">
         <div class="card-body">
-          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod mi eu est commodo, sed consequat elit ornare. Sed consequat convallis sagittis. Morbi sagittis lacus vitae tristique condimentum. Donec scelerisque, magna eu aliquet pharetra,</p>
+          <p class="lead"><?php echo $ExistingBio; ?></p>
         </div>
       </div>
     </div>

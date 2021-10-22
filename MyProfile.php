@@ -159,7 +159,7 @@ if (isset($_POST["submit"])) {
                  <h3><?php echo $ExistingName; ?></h3>
           <?php }else{  ?>
      
-           <h3>No Username</h3>
+           <h3>No name found</h3>
           <?php } ?>
        </div>
        <div class="card-body">
