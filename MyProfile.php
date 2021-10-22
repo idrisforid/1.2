@@ -34,8 +34,8 @@ if (isset($_POST["submit"])) {
 
   
 
-   if (strlen($AHeadline)>12) {
-    $_SESSION["ErrorMessage"]= "HeadLine should be less than 12 characters";
+   if (strlen($AHeadline)>30) {
+    $_SESSION["ErrorMessage"]= "HeadLine should be less than 30 characters";
      Redirect_to("MyProfile.php");
   }
   else if (strlen($ABio)>500) {
@@ -193,7 +193,7 @@ if (isset($_POST["submit"])) {
                <div class="form-group">
                 <input class="form-control" type="text" id="title" placeholder="headline" name="headline" >
                  <small class="text-muted">Add a professional headline like, 'Engineer' at XYZ or 'Architect'</small>
-                 <span class="text-danger">Not more than 12 characters</span>
+                 <span class="text-danger">Not more than 30 characters</span>
                </div>
 
                <div class="mb-3">

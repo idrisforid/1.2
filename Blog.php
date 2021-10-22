@@ -155,7 +155,7 @@
             <?php echo htmlentities($PostTitle)  ; ?>
               
             </h4>
-           <small class="text-muted">Category: <span class="text-dark"> <?php echo $Category ; ?> </span> & Written by <span class="text-dark"> <?php echo htmlentities($Admin); ?> </span> on <span class="text-dark"><?php echo htmlentities($DateTime) ; ?></span></small>
+           <small class="text-muted">Category: <span class="text-dark"> <?php echo $Category ; ?> </span> & Written by <span class="text-dark"> <a href="Profile.php?username=<?php echo htmlentities($Admin); ?>"> <?php echo htmlentities($Admin); ?> </a></span> on <span class="text-dark"><?php echo htmlentities($DateTime) ; ?></span></small>
 
            <span style="float: right;" class="badge badge-dark text-white">Comments 
             <?php echo ApproveCommentsAccordingToPost($PostId); ?>
